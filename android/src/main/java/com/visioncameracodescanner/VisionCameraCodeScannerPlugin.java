@@ -1,5 +1,5 @@
 package com.visioncameracodescanner;
-
+import java.util.Base64;
 import static com.visioncameracodescanner.BarcodeConverter.convertToArray;
 import static com.visioncameracodescanner.BarcodeConverter.convertToMap;
 
@@ -149,6 +149,8 @@ public class VisionCameraCodeScannerPlugin extends FrameProcessorPlugin {
 
     int type = barcode.getValueType();
     map.putInt("type", type);
+   
+    map.putString("rawBytes", Base64.getEncoder().encodeToString(barcode.getRawBytes()));
 
     switch (type) {
       case Barcode.TYPE_UNKNOWN:
