@@ -71,6 +71,8 @@ class VisionCameraCodeScanner: NSObject, FrameProcessorPluginBase {
         
         map["type"] = barcode.valueType
         
+        map["rawBytes"] = barcode.rawData!.base64EncodedString()
+
         switch barcode.valueType {
         case .unknown, .ISBN, .text:
             map["data"] = barcode.rawValue
